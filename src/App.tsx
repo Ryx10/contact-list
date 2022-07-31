@@ -1,4 +1,3 @@
-import PersonInfo from './PersonInfo'
 import {useContacts} from './data/useContacts'
 import {useState} from 'react'
 import {isErrorFeedback, isLoadingFeedback} from './helpers/Feedback'
@@ -7,6 +6,7 @@ import LoadingView from './ui/LoadingView'
 import NavigationPanel from './ui/NavigationPanel'
 import ErrorView from './ui/ErrorView'
 import ErrorToast from './ui/ErrorToast'
+import ContactList from './ui/ContactList'
 
 function App() {
   const {data, feedback, fetchNextPage} = useContacts()
@@ -24,12 +24,7 @@ function App() {
     <>
       <div className="App">
         <div className="selected">Selected contacts: {selected.length}</div>
-        <div className="list">
-          {data &&
-            data.map((personInfo) => (
-              <PersonInfo key={personInfo.id} data={personInfo} />
-            ))}
-        </div>
+        <ContactList contacts={data}></ContactList>
       </div>
       <NavigationPanel>
         <LoadMoreButton loadMoreFunction={fetchNextPage} feedback={feedback} />
