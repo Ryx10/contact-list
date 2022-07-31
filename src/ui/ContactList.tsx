@@ -5,6 +5,8 @@ import Autosizer from 'react-virtualized-auto-sizer'
 
 import css from './ContactList.module.css'
 
+export const ITEM_HEIGHT = 175
+
 type Props = {
   selectedContacts: Array<Contact>
   notSelectedContacts: Array<Contact>
@@ -31,15 +33,14 @@ const ContactList = ({
       <PersonInfo key={contact.id} data={contact} onClick={selectContact} />
     )),
   ]
-
   return (
     <div className={css.list}>
-      <Autosizer>
+      <Autosizer defaultHeight={1000} defaultWidth={1000}>
         {({height, width}: {height: number; width: number}) => (
           <List
             height={height}
-            itemCount={notSelectedContacts.length}
-            itemSize={175}
+            itemCount={items.length}
+            itemSize={ITEM_HEIGHT}
             width={width}>
             {({index, style}: {index: number; style: object}) => (
               <div style={style}>{items[index]}</div>
