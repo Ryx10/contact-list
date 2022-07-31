@@ -1,5 +1,5 @@
 import {toast, ToastContainer} from 'react-toastify'
-import {useEffect} from 'react'
+import {useCallback, useEffect} from 'react'
 
 import 'react-toastify/dist/ReactToastify.css'
 import css from './ErrorToast.module.css'
@@ -10,18 +10,21 @@ type Props = {
 }
 
 const ErrorToast = ({show, retry}: Props) => {
-  const notify = () =>
-    toast.error(
-      <div>
-        <div>Something went wrong...</div>
-        <a className={css.linkButton} onClick={retry}>
-          Try again
-        </a>
-      </div>,
-      {
-        style: {cursor: 'default'},
-      },
-    )
+  const notify = useCallback(
+    () =>
+      toast.error(
+        <div>
+          <div>Something went wrong...</div>
+          <span className={css.linkButton} onClick={retry}>
+            Try again
+          </span>
+        </div>,
+        {
+          style: {cursor: 'default'},
+        },
+      ),
+    [retry],
+  )
 
   useEffect(() => {
     if (show) {
@@ -29,7 +32,7 @@ const ErrorToast = ({show, retry}: Props) => {
       notify()
     }
     return () => toast.clearWaitingQueue()
-  }, [show])
+  }, [show, notify])
 
   return (
     <ToastContainer
