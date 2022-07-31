@@ -1,4 +1,6 @@
 .header {
     font-size: 32px;
-    margin: 24px 16px;
+    padding: 24px 16px;
+    box-sizing: border-box;
+    height: 10vh;
 }
