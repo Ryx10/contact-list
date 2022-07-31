@@ -47,22 +47,6 @@ const ContactList = ({
           </List>
         )}
       </Autosizer>
-
-      {/*{selectedContacts.map((personInfo) => (*/}
-      {/*  <PersonInfo*/}
-      {/*    key={personInfo.id}*/}
-      {/*    data={personInfo}*/}
-      {/*    onClick={deselectContact}*/}
-      {/*    selected*/}
-      {/*  />*/}
-      {/*))}*/}
-      {/*{notSelectedContacts.map((personInfo) => (*/}
-      {/*  <PersonInfo*/}
-      {/*    key={personInfo.id}*/}
-      {/*    data={personInfo}*/}
-      {/*    onClick={selectContact}*/}
-      {/*  />*/}
-      {/*))}*/}
     </div>
   )
 }
