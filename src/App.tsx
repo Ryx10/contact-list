@@ -2,28 +2,38 @@ import PersonInfo from './PersonInfo'
 import {useContacts} from './data/useContacts'
 import {useState} from 'react'
 import {isErrorFeedback, isLoadingFeedback} from './helpers/Feedback'
+import LoadMoreButton from './ui/LoadMoreButton'
+import Loader from './ui/Loader'
+import NavigationPanel from './ui/NavigationPanel'
+import ErrorView from './ui/ErrorView'
 
 function App() {
-  const {data, feedback} = useContacts()
+  const {data, feedback, fetchNextPage} = useContacts()
   const [selected] = useState([])
 
-  if (isLoadingFeedback(feedback)) {
-    return <>Loading</>
+  if (!data && isLoadingFeedback(feedback)) {
+    return <Loader />
   }
 
-  if (isErrorFeedback(feedback)) {
-    return <pre>{feedback.message}</pre>
+  if (!data && isErrorFeedback(feedback)) {
+    return <ErrorView refetch={fetchNextPage} />
   }
 
   return (
-    <div className="App">
-      <div className="selected">Selected contacts: {selected.length}</div>
-      <div className="list">
-        {data.map((personInfo) => (
-          <PersonInfo key={personInfo.id} data={personInfo} />
-        ))}
+    <>
+      <div className="App">
+        <div className="selected">Selected contacts: {selected.length}</div>
+        <div className="list">
+          {data &&
+            data.map((personInfo) => (
+              <PersonInfo key={personInfo.id} data={personInfo} />
+            ))}
+        </div>
       </div>
-    </div>
+      <NavigationPanel>
+        <LoadMoreButton loadMoreFunction={fetchNextPage} feedback={feedback} />
+      </NavigationPanel>
+    </>
   )
 }
 
