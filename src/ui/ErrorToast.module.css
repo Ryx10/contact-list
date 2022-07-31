@@ -1,0 +1,8 @@
+.linkButton {
+    color: #0095ff;
+    cursor: pointer;
+}
+
+.linkButton:hover {
+    text-decoration: underline;
+}

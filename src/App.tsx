@@ -6,6 +6,7 @@ import LoadMoreButton from './ui/LoadMoreButton'
 import Loader from './ui/Loader'
 import NavigationPanel from './ui/NavigationPanel'
 import ErrorView from './ui/ErrorView'
+import ErrorToast from './ui/ErrorToast'
 
 function App() {
   const {data, feedback, fetchNextPage} = useContacts()
@@ -33,6 +34,7 @@ function App() {
       <NavigationPanel>
         <LoadMoreButton loadMoreFunction={fetchNextPage} feedback={feedback} />
       </NavigationPanel>
+      <ErrorToast show={isErrorFeedback(feedback)} retry={fetchNextPage} />
     </>
   )
 }
