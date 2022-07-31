@@ -27,7 +27,7 @@ export const useContacts = (): {
   }, [])
   useEffect(() => {
     void fetchData()
-  }, [])
+  }, [fetchData])
 
   return {feedback, data, fetchNextPage: fetchData}
 }
