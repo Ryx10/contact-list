@@ -1,4 +1,4 @@
-import {Contact} from './types'
+import {Contact} from '../types'
 import {useEffect, useReducer} from 'react'
 
 type State = {

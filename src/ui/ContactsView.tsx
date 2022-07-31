@@ -1,7 +1,7 @@
 import {Contact} from '../types'
 import ContactList from './ContactList'
-import useSelectableContacts from '../useSelectableContacts'
 import ContactsHeader from './ContactsHeader'
+import useSelectableContacts from '../data/useSelectableContacts'
 
 type Props = {
   contacts: Array<Contact> | null

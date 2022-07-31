@@ -1,5 +1,7 @@
 import type {Contact} from '../types'
-import PersonInfo from '../PersonInfo'
+import PersonInfo from './PersonInfo'
+
+import css from './ContactList.module.css'
 
 type Props = {
   selectedContacts: Array<Contact>
@@ -15,7 +17,7 @@ const ContactList = ({
   deselectContact,
 }: Props) => {
   return (
-    <div className="list">
+    <div className={css.list}>
       {selectedContacts.map((personInfo) => (
         <PersonInfo
           key={personInfo.id}
