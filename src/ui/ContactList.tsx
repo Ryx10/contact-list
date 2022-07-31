@@ -1,19 +1,19 @@
 import type {Contact} from '../types'
 import PersonInfo from '../PersonInfo'
-import useSelectableContacts from '../useSelectableContacts'
 
 type Props = {
-  contacts: Array<Contact> | null
+  selectedContacts: Array<Contact>
+  notSelectedContacts: Array<Contact>
+  selectContact: (contact: Contact) => void
+  deselectContact: (contact: Contact) => void
 }
 
-const ContactList = ({contacts}: Props) => {
-  const {
-    selectedContacts,
-    notSelectedContacts,
-    selectContact,
-    deselectContact,
-  } = useSelectableContacts(contacts)
-
+const ContactList = ({
+  selectedContacts,
+  notSelectedContacts,
+  selectContact,
+  deselectContact,
+}: Props) => {
   return (
     <div className="list">
       {selectedContacts.map((personInfo) => (
