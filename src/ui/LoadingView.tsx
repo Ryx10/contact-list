@@ -1,6 +1,6 @@
 import css from './Loader.module.css'
 
-const Loader = () => {
+const LoadingView = () => {
   return (
     <div className={css.container}>
       <div className={css.loader} />
@@ -8,4 +8,4 @@ const Loader = () => {
   )
 }
 
-export default Loader
+export default LoadingView

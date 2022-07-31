@@ -3,7 +3,7 @@ import {useContacts} from './data/useContacts'
 import {useState} from 'react'
 import {isErrorFeedback, isLoadingFeedback} from './helpers/Feedback'
 import LoadMoreButton from './ui/LoadMoreButton'
-import Loader from './ui/Loader'
+import LoadingView from './ui/LoadingView'
 import NavigationPanel from './ui/NavigationPanel'
 import ErrorView from './ui/ErrorView'
 import ErrorToast from './ui/ErrorToast'
@@ -13,7 +13,7 @@ function App() {
   const [selected] = useState([])
 
   if (!data && isLoadingFeedback(feedback)) {
-    return <Loader />
+    return <LoadingView />
   }
 
   if (!data && isErrorFeedback(feedback)) {

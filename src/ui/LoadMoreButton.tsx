@@ -1,7 +1,7 @@
 import {Feedback, isLoadingFeedback} from '../helpers/Feedback'
 import Button from './common/Button'
 type Props = {
-  loadMoreFunction: any
+  loadMoreFunction: () => void
   feedback: Feedback
 }
 
